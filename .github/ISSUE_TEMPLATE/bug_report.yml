@@ -1,0 +1,66 @@
+name: 问题反馈 / Bug report
+description: 启动、走棋、分析、界面或音效有异常
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请先查阅 [使用指南](https://github.com/Wu200008/wilderness-xiangqi/blob/main/docs/USAGE.md)，并检查是否已有同类 Issue。
+        本页面公开可见，请不要上传密码、令牌或包含个人路径的完整日志。
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      placeholder: 例如 v1.2.0，或源码 commit
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      placeholder: 例如 Windows 11 x64、CPU、内存；便携包或源码运行
+    validations:
+      required: true
+  - type: dropdown
+    id: variant
+    attributes:
+      label: 玩法
+      options:
+        - 普通象棋
+        - 混合揭棋
+        - 主菜单 / 启动 / 其他
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 对战方式
+      options:
+        - 人机对弈
+        - AI 观战
+        - 同机双人
+        - 不适用
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请写清设置、难度和发生异常前的操作；与某步棋相关时可附公开 JSON 棋谱。
+      placeholder: |
+        1. 选择……
+        2. 点击……
+        3. 出现……
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: 截图、公开棋谱或补充信息
+      description: 可直接拖入文件。公开前请检查附件中没有个人信息。

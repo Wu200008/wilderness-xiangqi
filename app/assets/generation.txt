@@ -1,0 +1,14 @@
+Generated with the built-in image_gen tool for this local project.
+Direction selected by user: C, Don't Starve-inspired character badges.
+The character mapping is a custom visual design, not official game factions.
+
+Final sprite generation prompt:
+Use case: precise-object-edit / game sprite sheet. Transform the attached approved Chinese chess character-token design sheet into a production-ready TRANSPARENT GAME SPRITE ATLAS. Preserve all 14 approved designs very closely: Wilson 帅, Wendy 仕, warm Koalefant 相, wooden wheel 车, copper clockwork 马, orange Chester 炮, torch backpack 兵; Maxwell 将, Wickerbottom 士, gray Koalefant 象, black gear wheel 车, black clockwork 马, charcoal Chester 炮, axe backpack 卒; plus universal closed-eye stitched back.
+REAL TRANSPARENT BACKGROUND / ALPHA. Remove ALL parchment background, title, captions, row headers, shadows behind the token cutouts, decorative page graphics. Only 15 isolated illustrated tokens remain.
+Layout is a strict sprite atlas of EXACTLY FIVE COLUMNS AND THREE ROWS, equal rectangular cells, no gutters or extra outer page margin. Each token is centered INSIDE its own cell. Each complete silhouette occupies 80% of the cell width and 84% of cell height, with transparent padding on all sides; do NOT let any hair, torch or outline cross into neighboring cell. Center each round central disk horizontally and place its center at 61% of cell height, keeping consistent disk scale and alignment. The head ornament may extend upward but no taller than its cell. All fourteen disk faces same apparent size.
+Read order:
+ROW 1: red 帅 | red 仕 | red 相 | red 车 | red 马.
+ROW 2: red 炮 | red 兵 | black 将 | black 士 | black 象.
+ROW 3: black 车 | black 马 | black 炮 | black 卒 | ONE neutral stitched CLOSED-EYE back.
+These exact characters rendered clearly and large, use simplified 车 and 马 consistently. No labels outside tokens.
+Keep strongly hand-drawn Don't Starve gothic ink aesthetic, crooked angular outlines, scratchy dry-pen hatching, warm bone-white centers, clear dark cinnabar red characters vs charcoal black characters. Simplify ultra-fine marks for game legibility at 64–80px, preserve distinctive silhouettes. The back is one neutral dark stitched-hide disk WITHOUT faction-colored decorations, characters or character-specific shapes. Real transparent background, not white/gray/checkerboard. Output ONLY the full 5 x 3 atlas.

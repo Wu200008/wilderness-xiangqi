@@ -1,0 +1,22 @@
+name: 功能建议 / Feature request
+description: 描述希望改善的使用体验或新增功能
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现在遇到什么问题？
+      description: 请从下棋或使用场景出发，说明需要改善的地方。
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 希望怎样改进？
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 参考或补充信息
+      description: 可附草图、规则来源或相关 Issue；无需提供未经许可的游戏素材。

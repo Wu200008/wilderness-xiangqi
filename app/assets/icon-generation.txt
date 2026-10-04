@@ -1,0 +1,17 @@
+Generated: 2026-10-04
+Mode: built-in image_gen, transparent_background=true
+Reference: assets/characters.png (style only)
+Source: exec-739e7e93-07a0-4e0f-9519-e7fea8a696eb.png
+Assets: app-icon.png (unaltered generated PNG); app-icon.ico (16, 24, 32, 48, 64, 128, 256 px image-format conversion with alpha retained).
+Original wilderness-themed Chinese chess application artwork. No official game logo used.
+
+Final prompt:
+Use case: logo-brand
+Asset type: Windows desktop app icon, single square transparent PNG.
+Primary request: Create a distinctive Chinese chess (xiangqi) application icon in a hand-inked gothic wilderness survival game aesthetic, matching the dark ink, parchment cream, muted red, and irregular twig edges of the provided style reference.
+Input image: reference only, not an edit target. Use the general materials and illustrative language, not any existing character or official logo.
+Subject: one large frontal round cream-colored Chinese chess piece with a very large, clearly written deep red simplified Chinese character "帅" in its center, framed by a thick dark almost-black irregular wood rim. Two or three short crooked twigs subtly emerge from the rim, like a small wilderness talisman.
+Composition: centered, near-square compact silhouette occupying about 88% of the canvas. The cream disk and red character must dominate; silhouette and character remain understandable at 32 by 32 pixels. Truly transparent outside the icon, including corners. No background or shadow panel. Leave enough margin to avoid cropping.
+Style: original hand-drawn 2D game item icon, bold slightly uneven charcoal ink outlines, sparse scratchy hatching only around the outside rim, restrained parchment texture, chunky readable shapes. Main Chinese character drawn with clean bold brush strokes, not ornate.
+Exact text: "帅" only.
+Avoid: camera, faces, characters, official Don’t Starve logo or wordmark, English text, board grid, tiny symbols, overlapping additional pieces, photorealism, glossy 3D, gradients, highly detailed decoration, rectangular badge, opaque background, watermark.

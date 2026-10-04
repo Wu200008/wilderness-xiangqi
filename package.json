@@ -1,0 +1,28 @@
+{
+  "name": "wilderness-xiangqi",
+  "version": "1.2.0",
+  "private": true,
+  "description": "荒野象棋 — 离线象棋与混合揭棋",
+  "main": "app/main.cjs",
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test app/core/rules.test.mjs app/core/jieqi-ai.test.mjs app/analysis.test.mjs",
+    "test:engine": "node --test app/backend.test.cjs",
+    "fetch:engine": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/fetch-engine.ps1",
+    "build:portable": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-portable.ps1",
+    "test:portable": "node scripts/test-portable.cjs",
+    "postinstall": "node node_modules/electron/install.js"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "playwright-core": "1.63.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wu200008/wilderness-xiangqi.git"
+  }
+}

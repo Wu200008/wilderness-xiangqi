@@ -1,0 +1,39 @@
+name: Windows portable validation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run fetch:engine
+      - run: npm run test:engine
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          install: mingw-w64-ucrt-x86_64-gcc
+          path-type: inherit
+      - name: Add native compiler to PowerShell PATH
+        shell: msys2 {0}
+        run: cygpath -w /ucrt64/bin >> "$GITHUB_PATH"
+      - run: npm run build:portable
+      - run: npm run test:portable
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wilderness-xiangqi-windows-x64
+          path: |
+            dist/*.zip
+            dist/SHA256SUMS.txt
+            dist/portable-validation.json
+          if-no-files-found: error

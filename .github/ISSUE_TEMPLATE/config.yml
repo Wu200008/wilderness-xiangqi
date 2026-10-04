@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 使用指南 / User guide
+    url: https://github.com/Wu200008/wilderness-xiangqi/blob/main/docs/USAGE.md
+    about: 开局流程、规则、局势分析、音效和常见问题
+  - name: 下载发行版 / Download
+    url: https://github.com/Wu200008/wilderness-xiangqi/releases/latest
+    about: Windows x64 便携包，无需安装开发环境

@@ -92,7 +92,9 @@ async function move() {
     await move();
     const mixed = await state();
     assert.ok(mixed.ply >= 2);
-    assert.ok(mixed.board.filter(piece => piece?.covered).length <= 28);
+    // AI may legally move its general or a newly revealed enemy-colored piece;
+    // only the human's opening move is guaranteed to uncover a new piece.
+    assert.ok(mixed.board.filter(piece => piece?.covered).length <= 29);
     assert.doesNotMatch(JSON.stringify(mixed), /"(?:hidden|permutation|seed)"\s*:/);
     record('mixed Jieqi worker runs from extracted package and keeps concealed identities private', { ply: mixed.ply });
     assert.deepEqual(report.rendererErrors, []);

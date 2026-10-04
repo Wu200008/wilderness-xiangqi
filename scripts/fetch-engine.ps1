@@ -1,6 +1,7 @@
 ﻿[CmdletBinding()]
 param([string]$Destination = 'engines\pikafish')
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'file-hash.ps1')
 $projectRoot = Split-Path $PSScriptRoot -Parent
 if (-not [IO.Path]::IsPathRooted($Destination)) { $Destination = Join-Path $projectRoot $Destination }
 $Destination = [IO.Path]::GetFullPath($Destination)
@@ -12,7 +13,7 @@ function Get-VerifiedFile($url, $file, $expectedHash) {
     if (-not (Test-Path -LiteralPath $file)) {
         Invoke-WebRequest -Uri $url -OutFile $file -UseBasicParsing -TimeoutSec 300
     }
-    if ((Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedHash) {
+    if ((Get-Sha256 $file) -ne $expectedHash) {
         throw "SHA256 mismatch: $file. No engine was installed."
     }
 }
@@ -22,7 +23,7 @@ Get-VerifiedFile $manifest.source.url (Join-Path $cache 'Pikafish-source-2026-09
 foreach ($file in $manifest.files) {
     $existing = Join-Path $Destination $file.name
     if ((Test-Path -LiteralPath $existing) -and
-        (Get-FileHash -LiteralPath $existing -Algorithm SHA256).Hash.ToLowerInvariant() -ne $file.sha256) {
+        (Get-Sha256 $existing) -ne $file.sha256) {
         throw "A different file already exists: $existing. Choose an empty destination to preserve it."
     }
 }
@@ -32,7 +33,7 @@ $names = @($manifest.files | ForEach-Object { $_.archiveName })
 & tar.exe -xf $archive -C $extract @names
 if ($LASTEXITCODE -ne 0) { throw 'Could not extract the official 7z archive. Update Windows tar (bsdtar) with 7z support.' }
 foreach ($file in $manifest.files) {
-    if ((Get-FileHash -LiteralPath (Join-Path $extract $file.archiveName) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $file.sha256) {
+    if ((Get-Sha256 (Join-Path $extract $file.archiveName)) -ne $file.sha256) {
         throw "Invalid extracted file: $($file.archiveName)"
     }
 }

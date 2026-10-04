@@ -1,6 +1,7 @@
 ﻿[CmdletBinding()]
 param([string]$RuntimeDirectory = '')
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'file-hash.ps1')
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $package = Get-Content -LiteralPath (Join-Path $projectRoot 'package.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $name = "wilderness-xiangqi-$($package.version)-windows-x64"
@@ -50,7 +51,7 @@ $manifest = [ordered]@{
     engine='Pikafish 2026-09-06';engineSource='Pikafish-source-2026-09-06.zip';
     files=@($files | ForEach-Object { [ordered]@{
         path=$_.FullName.Substring($stage.Length + 1).Replace('\','/');bytes=$_.Length;
-        sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+        sha256=(Get-Sha256 $_.FullName)
     }})
 }
 [IO.File]::WriteAllText((Join-Path $stage 'release-manifest.json'), ($manifest | ConvertTo-Json -Depth 6), $utf8)
@@ -59,7 +60,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $sourceDestination = Join-Path $dist 'Pikafish-source-2026-09-06.zip'
 Copy-Item -LiteralPath (Join-Path $projectRoot '.cache\engine-fetch\Pikafish-source-2026-09-06.zip') -Destination $sourceDestination -Force
 $checksums = @($zipPath, $sourceDestination) | ForEach-Object {
-    ((Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash.ToLowerInvariant()) + '  ' + [IO.Path]::GetFileName($_)
+    ((Get-Sha256 $_)) + '  ' + [IO.Path]::GetFileName($_)
 }
 [IO.File]::WriteAllText((Join-Path $dist 'SHA256SUMS.txt'), (($checksums -join "`n") + "`n"), $utf8)
 [ordered]@{archive=$zipPath;bytes=(Get-Item -LiteralPath $zipPath).Length;stage=$stage;files=$files.Count} | ConvertTo-Json
